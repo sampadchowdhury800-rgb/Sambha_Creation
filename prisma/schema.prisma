@@ -1,0 +1,99 @@
+// ══════════════════════════════════════════════════════════════
+// SAMBHA CREATION — Prisma Schema
+// Database: Neon PostgreSQL
+// ══════════════════════════════════════════════════════════════
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+// ── Admin Account ────────────────────────────────────────────
+model Admin {
+  id           String   @id @default(cuid())
+  email        String   @unique
+  passwordHash String
+  name         String   @default("Admin")
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+// ── Article ──────────────────────────────────────────────────
+model Article {
+  id               String        @id @default(cuid())
+  title            String
+  slug             String        @unique
+  headline         String        @db.Text
+  description      String        @db.Text
+  content          String        @db.Text // Rich text HTML from editor
+  author           String        @default("Sambha Creation")
+  categoryId       String
+  category         Category      @relation(fields: [categoryId], references: [id])
+  tags             Tag[]         @relation("ArticleTags")
+  featuredImageUrl String?
+  featuredImageId  String? // Cloudinary public_id
+  featuredImageAlt String?
+  images           ArticleImage[]
+  videoUrl         String? // Cloudinary video URL
+  videoPublicId    String? // Cloudinary video public_id
+  instagramVideo   String? // Instagram Reel/Post URL
+  youtubeVideo     String? // YouTube Video URL
+  status           ArticleStatus @default(DRAFT)
+  publishedAt      DateTime?
+  scheduledAt      DateTime? // For scheduled publishing
+  seoTitle         String?
+  seoDescription   String?       @db.Text
+  canonicalUrl     String?
+  ogImageUrl       String?
+  readingTime      Int? // Minutes
+  wordCount        Int?
+  createdAt        DateTime      @default(now())
+  updatedAt        DateTime      @updatedAt
+
+  @@index([status, publishedAt])
+  @@index([categoryId])
+  @@index([slug])
+}
+
+// ── Article Images (gallery) ─────────────────────────────────
+model ArticleImage {
+  id        String  @id @default(cuid())
+  url       String
+  publicId  String // Cloudinary public_id
+  alt       String?
+  width     Int?
+  height    Int?
+  articleId String
+  article   Article @relation(fields: [articleId], references: [id], onDelete: Cascade)
+  sortOrder Int     @default(0)
+
+  @@index([articleId])
+}
+
+// ── Category ─────────────────────────────────────────────────
+model Category {
+  id       String    @id @default(cuid())
+  name     String    @unique
+  slug     String    @unique
+  emoji    String?
+  cssClass String? // e.g. "cat-crime"
+  articles Article[]
+}
+
+// ── Tag ──────────────────────────────────────────────────────
+model Tag {
+  id       String    @id @default(cuid())
+  name     String    @unique
+  slug     String    @unique
+  articles Article[] @relation("ArticleTags")
+}
+
+// ── Enums ────────────────────────────────────────────────────
+enum ArticleStatus {
+  DRAFT
+  PUBLISHED
+  SCHEDULED
+}

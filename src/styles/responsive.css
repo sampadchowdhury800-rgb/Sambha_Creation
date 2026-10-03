@@ -1,0 +1,297 @@
+/* ============================================================
+   SAMBHA CREATION — RESPONSIVE.CSS
+   Mobile-first breakpoints: 320 → 2560px
+   Version 1.0
+============================================================ */
+
+/* ── BASE: Mobile First (< 480px) ─────────────────────────── */
+
+/* Navbar */
+.nav-links   { display: none; }
+.hamburger   { display: flex; }
+.search-bar  { width: 36px; padding: 8px; overflow: hidden; position: relative; }
+.search-bar .search-input { width: 0; opacity: 0; position: absolute; }
+.search-bar:focus-within .search-input { width: calc(100% - 32px); opacity: 1; position: relative; }
+.search-bar:focus-within { width: 200px; }
+
+.nav-logo-text { font-size: 1rem; }
+
+/* Hero (compact CTA band — sized by its own padding, never by vh) */
+.hero-actions { flex-direction: column; align-items: stretch; }
+.hero-actions .btn { justify-content: center; }
+
+/* News Grid */
+.news-grid {
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+/* About Grid */
+.about-grid {
+  grid-template-columns: 1fr;
+}
+
+/* Contact Layout */
+.contact-layout {
+  grid-template-columns: 1fr;
+  gap: 32px;
+}
+
+/* Footer */
+.footer-grid {
+  grid-template-columns: 1fr;
+  gap: 32px;
+}
+
+.footer-brand-desc { max-width: 100%; }
+
+/* Share Modal */
+.share-grid {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+/* Back to top */
+.back-to-top { bottom: 20px; right: 20px; }
+
+/* Card body */
+.card-body { padding: 16px 18px 20px; }
+
+/* Card Actions */
+.card-actions {
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.card-actions .btn {
+  font-size: 0.75rem;
+  padding: 7px 12px;
+}
+
+.card-actions-right {
+  margin-left: 0;
+}
+
+/* Page hero */
+.page-hero {
+  padding-top: calc(70px + 40px);
+  padding-bottom: 40px;
+}
+
+/* Section title */
+.section-line { display: none; }
+
+/* ── 480px ─────────────────────────────────────────────────── */
+@media (min-width: 480px) {
+
+  .search-bar {
+    width: 140px;
+    padding: 8px 14px;
+    overflow: visible;
+  }
+  .search-bar .search-input { width: 100%; opacity: 1; position: relative; }
+  .search-bar:focus-within { width: 200px; }
+
+  .news-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .share-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .hero-actions {
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+/* ── 640px ─────────────────────────────────────────────────── */
+@media (min-width: 640px) {
+
+  .news-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* ── 768px (Tablet) ────────────────────────────────────────── */
+@media (min-width: 768px) {
+
+  /* Navbar: show desktop nav */
+  .nav-links  { display: flex; }
+  .hamburger  { display: none; }
+  .mobile-nav { display: none !important; }
+
+  .search-bar { width: 160px; }
+  .search-bar:focus-within { width: 220px; }
+
+  /* News Grid */
+  .news-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+  /* About Grid */
+  .about-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  /* Contact */
+  .contact-layout {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  /* Footer */
+  .footer-grid {
+    grid-template-columns: 1.5fr 1fr 1fr;
+  }
+
+  /* Card body */
+  .card-body { padding: 20px 24px 24px; }
+
+  /* Card Actions */
+  .card-actions .btn { font-size: 0.82rem; padding: 8px 16px; }
+  .card-actions-right { margin-left: auto; }
+
+  /* Section line */
+  .section-line { display: block; }
+
+  /* Back to top */
+  .back-to-top { bottom: 32px; right: 32px; }
+}
+
+/* ── 1024px (Laptop) ───────────────────────────────────────── */
+@media (min-width: 1024px) {
+
+  /* Nav links: more compact, all visible */
+  .nav-link { font-size: 0.875rem; padding: 8px 14px; }
+
+  .search-bar { width: 180px; }
+  .search-bar:focus-within { width: 240px; }
+
+  /* News Grid: 2 → 3 columns for latest page */
+  .news-grid-3 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  /* Footer 4 columns */
+  .footer-grid {
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+  }
+
+  /* Contact layout */
+  .contact-layout { gap: 48px; }
+
+  /* About grid: 2 columns, some items span */
+  .about-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* ── 1280px (Desktop) ──────────────────────────────────────── */
+@media (min-width: 1280px) {
+
+  /* News Grid */
+  .news-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  /* Nav */
+  .nav-link { padding: 8px 16px; }
+  .search-bar { width: 200px; }
+  .search-bar:focus-within { width: 280px; }
+
+  /* Hero headline */
+  .hero-headline { letter-spacing: -0.04em; }
+
+  /* Container */
+  .container { padding-inline: 32px; }
+}
+
+/* ── 1536px (Large Desktop) ────────────────────────────────── */
+@media (min-width: 1536px) {
+
+  :root { --nav-h: 76px; }
+
+  .news-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+  }
+
+  .container { padding-inline: 40px; }
+}
+
+/* ── 1920px (Full HD) ──────────────────────────────────────── */
+@media (min-width: 1920px) {
+
+  :root {
+    --max-w: 1600px;
+    font-size: 17px;
+  }
+
+  .news-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 28px;
+  }
+}
+
+/* ── 2560px (Ultrawide / 4K) ───────────────────────────────── */
+@media (min-width: 2560px) {
+
+  :root {
+    --max-w: 2000px;
+    font-size: 18px;
+  }
+
+  .news-grid {
+    grid-template-columns: repeat(5, 1fr);
+    gap: 32px;
+  }
+
+  .footer-grid {
+    grid-template-columns: 2.5fr 1fr 1fr 1fr 1fr;
+  }
+}
+
+/* ── TOUCH DEVICE TWEAKS ───────────────────────────────────── */
+@media (hover: none) and (pointer: coarse) {
+
+  /* Always show gallery nav buttons on touch */
+  .gallery-btn { opacity: 1; }
+  .media-expand-btn { opacity: 1; }
+
+  /* Increase tap target sizes */
+  .btn { min-height: 44px; }
+  .btn-icon { width: 44px; height: 44px; }
+  .gallery-btn { width: 40px; height: 40px; }
+  .gallery-dot { width: 10px; height: 10px; }
+  .gallery-dot.active { width: 24px; }
+
+  /* Remove hover transforms that feel wrong on touch */
+  .news-card:hover { transform: none; }
+  .btn-primary:hover { transform: none; }
+  .btn-ghost:hover { transform: none; }
+}
+
+/* ── HIGH CONTRAST ─────────────────────────────────────────── */
+@media (prefers-contrast: high) {
+  :root {
+    --glass-border: rgba(255,255,255,0.2);
+    --text-muted: rgba(232,213,176,0.75);
+  }
+}
+
+/* ── PRINT ─────────────────────────────────────────────────── */
+@media print {
+  .navbar, .share-modal, .lightbox, .back-to-top,
+  .footer, #ambient-canvas, .bg-overlay { display: none; }
+
+  body { background: white; color: black; }
+  .news-card { break-inside: avoid; border: 1px solid #ccc; }
+  .card-full-content-wrapper { grid-template-rows: 1fr; }
+}

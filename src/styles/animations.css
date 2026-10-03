@@ -1,0 +1,281 @@
+/* ============================================================
+   SAMBHA CREATION — ANIMATIONS.CSS
+   All keyframes, transitions & micro-interactions
+   Version 1.0
+============================================================ */
+
+/* ── AMBIENT BACKGROUND ────────────────────────────────────── */
+@keyframes bg-shift {
+  0%   { opacity: 0.8; }
+  50%  { opacity: 1.0; }
+  100% { opacity: 0.85; }
+}
+
+@keyframes orb-float-1 {
+  0%   { transform: translate(0, 0) scale(1); }
+  33%  { transform: translate(30px, -40px) scale(1.08); }
+  66%  { transform: translate(-20px, 20px) scale(0.95); }
+  100% { transform: translate(0, 0) scale(1); }
+}
+
+@keyframes orb-float-2 {
+  0%   { transform: translate(0, 0) scale(1); }
+  40%  { transform: translate(-40px, 30px) scale(1.12); }
+  70%  { transform: translate(25px, -15px) scale(0.92); }
+  100% { transform: translate(0, 0) scale(1); }
+}
+
+@keyframes orb-float-3 {
+  0%   { transform: translate(0, 0) scale(1); }
+  25%  { transform: translate(20px, 30px) scale(1.05); }
+  75%  { transform: translate(-30px, -20px) scale(0.97); }
+  100% { transform: translate(0, 0) scale(1); }
+}
+
+/* ── SKELETON SHIMMER ──────────────────────────────────────── */
+@keyframes skeleton-shimmer {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* ── CARD ENTRANCE ─────────────────────────────────────────── */
+@keyframes card-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(28px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* ── FADE UP (general) ─────────────────────────────────────── */
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ── FADE IN ───────────────────────────────────────────────── */
+@keyframes fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* ── SLIDE DOWN ────────────────────────────────────────────── */
+@keyframes slide-down {
+  from {
+    opacity: 0;
+    transform: translateY(-16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ── ZOOM IN (lightbox) ────────────────────────────────────── */
+@keyframes zoom-in {
+  from {
+    opacity: 0;
+    transform: scale(0.88);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* ── SCALE IN (modal) ──────────────────────────────────────── */
+@keyframes scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.92) translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* ── SPIN (loader) ─────────────────────────────────────────── */
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ── PULSE DOT ─────────────────────────────────────────────── */
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.5; transform: scale(0.8); }
+}
+
+/* ── GLOW PULSE ────────────────────────────────────────────── */
+@keyframes glow-pulse {
+  0%, 100% { box-shadow: 0 0 20px rgba(122,140,94,0.15); }
+  50%       { box-shadow: 0 0 40px rgba(122,140,94,0.35), 0 0 80px rgba(122,140,94,0.10); }
+}
+
+/* ── FLOAT (hero element) ──────────────────────────────────── */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-12px); }
+}
+
+/* ── WAVE (footer) ─────────────────────────────────────────── */
+@keyframes wave-1 {
+  0%   { d: path("M0,60 C240,100 480,20 720,60 C960,100 1200,20 1440,60 L1440,0 L0,0 Z"); }
+  50%  { d: path("M0,40 C240,80 480,10 720,40 C960,70 1200,10 1440,40 L1440,0 L0,0 Z"); }
+  100% { d: path("M0,60 C240,100 480,20 720,60 C960,100 1200,20 1440,60 L1440,0 L0,0 Z"); }
+}
+
+/* ── PARTICLE FLOAT ────────────────────────────────────────── */
+@keyframes particle-rise {
+  0%   { transform: translateY(0) translateX(0) scale(1); opacity: 0; }
+  10%  { opacity: 1; }
+  90%  { opacity: 0.6; }
+  100% { transform: translateY(-100vh) translateX(30px) scale(0.5); opacity: 0; }
+}
+
+/* ── BORDER GLOW ROTATE ────────────────────────────────────── */
+@keyframes border-glow-rotate {
+  from { --angle: 0deg; }
+  to   { --angle: 360deg; }
+}
+
+/* ── STAGGER HELPERS ───────────────────────────────────────── */
+.anim-delay-1 { animation-delay: 0.08s; }
+.anim-delay-2 { animation-delay: 0.16s; }
+.anim-delay-3 { animation-delay: 0.24s; }
+.anim-delay-4 { animation-delay: 0.32s; }
+.anim-delay-5 { animation-delay: 0.40s; }
+.anim-delay-6 { animation-delay: 0.48s; }
+
+/* ── ANIMATE ON SCROLL (JS adds .revealed) ─────────────────── */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s var(--ease-out),
+              transform 0.7s var(--ease-out);
+}
+
+.reveal.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── NAV LINK HOVER SHIMMER ────────────────────────────────── */
+@keyframes nav-shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+/* ── BUTTON RIPPLE ─────────────────────────────────────────── */
+@keyframes ripple {
+  from { transform: scale(0); opacity: 1; }
+  to   { transform: scale(4); opacity: 0; }
+}
+
+.btn-ripple {
+  position: relative;
+  overflow: hidden;
+}
+
+.ripple-effect {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.25);
+  pointer-events: none;
+  animation: ripple 0.6s linear;
+}
+
+/* ── HERO PARTICLES (background dots) ─────────────────────── */
+.hero-particle {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(122,140,94,0.5);
+  pointer-events: none;
+  animation: particle-rise linear infinite;
+}
+
+/* ── SEARCH SUGGESTION ENTRANCE ────────────────────────────── */
+.suggestion-item {
+  animation: fade-up 0.2s var(--ease-out) both;
+}
+
+/* ── TAG HOVER ─────────────────────────────────────────────── */
+.tag {
+  transition: background var(--t-fast), color var(--t-fast),
+              border-color var(--t-fast), transform var(--t-fast);
+}
+.tag:hover { transform: translateY(-1px); }
+
+/* ── GALLERY SLIDE TRANSITION ──────────────────────────────── */
+.gallery-track {
+  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+}
+
+/* ── CARD STAGGER (JS applies inline delay) ─────────────────── */
+/* Cards are staggered by news.js setting style.animationDelay */
+
+/* ── FOOTER WAVE ───────────────────────────────────────────── */
+.footer-wave-path {
+  animation: wave-motion 8s ease-in-out infinite alternate;
+  transform-origin: center bottom;
+}
+
+@keyframes wave-motion {
+  0%   { transform: scaleX(1)   translateY(0); }
+  50%  { transform: scaleX(1.02) translateY(3px); }
+  100% { transform: scaleX(1)   translateY(0); }
+}
+
+/* ── MOBILE MENU ITEM STAGGER ──────────────────────────────── */
+.mobile-nav-link {
+  animation: slide-down 0.3s var(--ease-out) both;
+}
+
+/* ── LOADING DOTS ──────────────────────────────────────────── */
+@keyframes dot-bounce {
+  0%, 80%, 100% { transform: scale(0); }
+  40%           { transform: scale(1); }
+}
+
+.loading-dots {
+  display: flex; gap: 6px; align-items: center;
+}
+
+.loading-dots span {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--prairie);
+  animation: dot-bounce 1.4s ease-in-out infinite both;
+}
+
+.loading-dots span:nth-child(1) { animation-delay: -0.32s; }
+.loading-dots span:nth-child(2) { animation-delay: -0.16s; }
+.loading-dots span:nth-child(3) { animation-delay: 0; }
+
+/* ── MEDIA QUERIES FOR ANIMATION PERFORMANCE ────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .gallery-track { transition: none; }
+  .reveal { opacity: 1; transform: none; }
+  .news-card { transition: none; }
+}
+
+/* ── ARTICLE LAZY-LOAD SPINNER ──────────────────────────────── */
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
